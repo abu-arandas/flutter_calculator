@@ -54,7 +54,7 @@ class _CalculatorState extends State<Calculator> {
                           style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          string.isEmpty ? '' : string.last,
+                          result == null ? '0' : result!.toString(),
                           style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                         ),
                       ],
@@ -174,9 +174,6 @@ class _CalculatorState extends State<Calculator> {
           for (var i = 0; i < string.length; i++) {
             if (i % 2 == 0) {
               calculate(result ?? 0, double.parse(string[i]));
-              string.clear();
-
-              string.add(result.toString());
             }
           }
         }
