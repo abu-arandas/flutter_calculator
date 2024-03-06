@@ -32,41 +32,42 @@ class _CalculatorState extends State<Calculator> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        body: Center(
-          child: SizedBox(
-            width: 350,
-            child: Column(
-              children: [
-                // Display
-                Expanded(
-                  child: Container(
-                    width: double.maxFinite,
-                    height: double.maxFinite,
-                    padding: const EdgeInsets.all(20),
-                    margin: const EdgeInsets.symmetric(vertical: 15),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Text(
-                          functions(),
-                          style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          result == null ? '0' : result!.toString(),
-                          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+        body: Column(
+          children: [
+            // Display
+            Expanded(
+              child: Container(
+                width: double.maxFinite,
+                height: double.maxFinite,
+                padding: const EdgeInsets.all(20),
+                margin: const EdgeInsets.symmetric(vertical: 15),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Text(
+                      functions(),
+                      style: const TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    Text(
+                      result == null ? '0' : result!.toString(),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-
-                // Buttons
-                Wrap(children: Buttons.values.map((e) => button(data: e)).toList()),
-              ],
+              ),
             ),
-          ),
+
+            // Buttons
+            Wrap(children: Buttons.values.map((e) => button(data: e)).toList()),
+          ],
         ),
       );
 
@@ -87,7 +88,8 @@ class _CalculatorState extends State<Calculator> {
               backgroundColor: data.color,
               foregroundColor: data.textColor,
               fixedSize: const Size(double.maxFinite, double.maxFinite),
-              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+              shape:
+                  const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
               textStyle: const TextStyle(fontWeight: FontWeight.bold),
             ),
             child: Text(data.text),
@@ -144,7 +146,10 @@ class _CalculatorState extends State<Calculator> {
 
         // operatorFunction
         else if (data.isOperator) {
-          if (string.last == '/' || string.last == '*' || string.last == '-' || string.last == '+') {
+          if (string.last == '/' ||
+              string.last == '*' ||
+              string.last == '-' ||
+              string.last == '+') {
             string.last = data.text;
           } else {
             string.add(data.text);
@@ -161,7 +166,10 @@ class _CalculatorState extends State<Calculator> {
           if (string.isEmpty) {
             string.add(data.text);
           } else {
-            if (string.last == '/' || string.last == '*' || string.last == '-' || string.last == '+') {
+            if (string.last == '/' ||
+                string.last == '*' ||
+                string.last == '-' ||
+                string.last == '+') {
               string.add(data.text);
             } else {
               string.last += data.text;

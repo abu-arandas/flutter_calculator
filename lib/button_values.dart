@@ -40,7 +40,11 @@ extension Data on Buttons {
       this == Buttons.n8 ||
       this == Buttons.n9;
 
-  bool get isOperator => this == Buttons.divide || this == Buttons.multiply || this == Buttons.add || this == Buttons.subtract;
+  bool get isOperator =>
+      this == Buttons.divide ||
+      this == Buttons.multiply ||
+      this == Buttons.add ||
+      this == Buttons.subtract;
 
   Color get color {
     switch (this) {
